@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { MulterModule } from '@nestjs/platform-express';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -8,6 +9,7 @@ import { UserModule } from './user/user.module';
 @Module({
   imports: [
     UserModule,
+    MulterModule.register({ dest: './uploads' }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: '127.0.0.1',
